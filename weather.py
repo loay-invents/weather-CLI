@@ -2,7 +2,7 @@ import sys
 import os
 import requests
 from dotenv import load_dotenv
-from formatter import format_weather
+from formatter import format_weather, format_separator
 
 load_dotenv()
 
@@ -42,13 +42,19 @@ def fetch_weather(city: str) -> dict:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python weather.py <city>")
-        print("Example: python weather.py Berlin")
+        print("Usage: python weather.py <city> [city2] [city3] ...")
+        print("Example: python weather.py Berlin London Tokyo")
         sys.exit(1)
 
-    city = " ".join(sys.argv[1:])
-    data = fetch_weather(city)
-    format_weather(data, UNITS)
+    cities = sys.argv[1:]
+
+    for i, city in enumerate(cities):
+        data = fetch_weather(city)
+        if data:
+            format_weather(data, UNITS)
+        if i < len(cities) - 1:
+            format_separator()
+
 
 
 if __name__ == "__main__":

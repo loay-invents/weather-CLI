@@ -1,3 +1,7 @@
+def format_separator() -> None:
+    """Print a separator line between cities."""
+    print("-" * 30)
+
 def format_weather(data: dict, units: str = "metric") -> None:
     """Format and print weather data in a readable way. """
     city        = data["name"]
