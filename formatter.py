@@ -9,7 +9,7 @@ def format_weather(data: dict, units: str = "metric") -> None:
     wind_speed  = data["wind"]["speed"]
 
     unit_symbol  = "°C"  if units == "metric" else "°F"
-    speed_symbol = "km/h" if units == "metric" else "mph"
+    speed_unit = "km/h" if units == "metric" else "mph"
 
     if units == "metric":
         wind_speed = round(wind_speed * 3.6, 1)  # m/s → km/h
@@ -18,6 +18,6 @@ def format_weather(data: dict, units: str = "metric") -> None:
     print(f"📍  {city}, {country}")
     print(f"🌤️   {description}")
     print(f"🌡️   {temp}{unit_symbol}  (feels like {feels_like}{unit_symbol})")
-    print(f"💨  Wind: {wind_speed} {speed_symbol}")
+    print(f"💨  Wind: {wind_speed} {speed_unit}")
     print(f"💧  Humidity: {humidity}%")
     print()
