@@ -1,5 +1,5 @@
 def format_weather(data: dict, units: str = "metric") -> None:
-    """Format and print weather data in a readable way."""
+    """Format and print weather data in a readable way. """
     city        = data["name"]
     country     = data["sys"]["country"]
     description = data["weather"][0]["description"].capitalize()
